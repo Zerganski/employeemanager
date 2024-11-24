@@ -49,9 +49,9 @@ public class EmployeeResource {
             employeeService.deleteEmployee(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EntityNotFoundException e) {
-            throw e; // Rethrow the exception
+            throw e;
         } catch (Exception e) {
-            e.printStackTrace();  // Log the exception for debugging purposes
+            e.printStackTrace();
             return new ResponseEntity<>("Failed to delete employee with ID: " + id, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

@@ -32,7 +32,7 @@ class EmployeeResourceTest {
     @Test
     void getAllEmployees_ReturnsListOfEmployees() {
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee(1L, "John Doe", "john@example.com", "Developer", "123456789", "image.jpg", "E123"));
+        employees.add(new Employee(1L, "John Doe", "john@example.com", "HR", "Developer", "123456789", "image.jpg", "E123"));
 
         when(employeeService.findAllEmployees()).thenReturn(employees);
 
@@ -44,7 +44,7 @@ class EmployeeResourceTest {
     @Test
     void getEmployeeById_ExistingId_ReturnsEmployee() {
         Long id = 1L;
-        Employee employee = new Employee(id, "John Doe", "john@example.com", "Developer", "123456789", "image.jpg", "E123");
+        Employee employee = new Employee(id, "John Doe", "john@example.com", "HR", "Developer", "123456789", "image.jpg", "E123");
 
         when(employeeService.findEmployeeById(id)).thenReturn(employee);
 
@@ -64,8 +64,8 @@ class EmployeeResourceTest {
 
     @Test
     void addEmployee_ValidEmployee_ReturnsCreatedEmployee() {
-        Employee employeeToAdd = new Employee(null,"John Doe", "john@example.com", "Developer", "123456789", "image.jpg", "E123");
-        Employee addedEmployee = new Employee(1L, "John Doe", "john@example.com", "Developer", "123456789", "image.jpg", "E123");
+        Employee employeeToAdd = new Employee(null,"John Doe", "john@example.com", "HR", "Developer", "123456789", "image.jpg", "E123");
+        Employee addedEmployee = new Employee(1L, "John Doe", "john@example.com", "HR", "Developer", "123456789", "image.jpg", "E123");
 
         when(employeeService.addEmployee(employeeToAdd)).thenReturn(addedEmployee);
 
@@ -108,8 +108,8 @@ class EmployeeResourceTest {
 
     @Test
     void updateEmployee_ValidEmployee_ReturnsUpdatedEmployee() {
-        Employee employeeToUpdate = new Employee(1L, "John Doe", "john@example.com", "Developer", "123456789", "image.jpg", "E123");
-        Employee updatedEmployee = new Employee(1L, "Updated Name", "updated@example.com", "Updated Job", "987654321", "updated.jpg", "E456");
+        Employee employeeToUpdate = new Employee(1L, "John Doe", "john@example.com", "HR", "Developer", "123456789", "image.jpg", "E123");
+        Employee updatedEmployee = new Employee(1L, "Updated Name", "updated@example.com", "Updated departament", "Updated Job", "987654321", "updated.jpg", "E456");
 
         when(employeeService.updateEmployee(employeeToUpdate)).thenReturn(updatedEmployee);
 
@@ -120,7 +120,7 @@ class EmployeeResourceTest {
 
     @Test
     void updateEmployee_NonExistingEmployee_ThrowsEntityNotFoundException() {
-        Employee nonExistingEmployee = new Employee(999L, "Non Existing", "nonexisting@example.com", "Non Existing", "000000000", "nonexisting.jpg", "E999");
+        Employee nonExistingEmployee = new Employee(999L, "Non Existing", "nonexisting@example.com", "Non Existing", "Non Existing", "000000000", "nonexisting.jpg", "E999");
 
         when(employeeService.updateEmployee(nonExistingEmployee)).thenThrow(EntityNotFoundException.class);
 
